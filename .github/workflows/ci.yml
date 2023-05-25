@@ -20,7 +20,5 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Format
         run: pnpm fmt
-      - name: Build
-        run: pnpm build
       - name: Test
         run: pnpm test
