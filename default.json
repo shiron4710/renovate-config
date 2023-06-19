@@ -4,24 +4,32 @@
     "config:base",
     ":timezone(Asia/Tokyo)",
     ":prHourlyLimitNone",
-    ":automergePatch"
+    ":prImmediately",
+    ":automergePatch",
+    ":widenPeerDependencies"
   ],
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
-    },
-    {
-      "matchUpdateTypes": "major",
-      "addLabels": ["major"]
-    },
-    {
-      "groupName": "eslint",
-      "extends": ["packages:linters"],
-      "matchPackagePatterns": ["eslint"]
-    }
-  ],
+  "stabilityDays": 3,
   "npm": {
-    "extends": ["npm:unpublishSafe"]
+    "extends": [
+      "npm:unpublishSafe",
+      ":automergePatch",
+      ":separatePatchReleases"
+    ],
+    "rangeStrategy": "bump",
+    "packageRules": [
+      {
+        "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+        "automerge": true
+      },
+      {
+        "matchUpdateTypes": "major",
+        "addLabels": ["major"]
+      },
+      {
+        "groupName": "eslint",
+        "extends": ["packages:linters"],
+        "matchPackagePatterns": ["eslint"]
+      }
+    ]
   }
 }
