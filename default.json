@@ -6,7 +6,8 @@
     ":prHourlyLimitNone",
     ":prImmediately",
     ":automergePatch",
-    ":widenPeerDependencies"
+    ":widenPeerDependencies",
+    ":semanticCommitTypeAll(chore)"
   ],
   "stabilityDays": 3,
   "npm": {
