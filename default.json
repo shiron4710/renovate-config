@@ -5,45 +5,26 @@
     ":timezone(Asia/Tokyo)",
     ":prHourlyLimitNone",
     ":prImmediately",
-    ":automergePatch",
+    ":automergeMinor",
+    ":separateMajorReleases",
     ":widenPeerDependencies",
     ":semanticCommitTypeAll(chore)"
   ],
   "stabilityDays": 3,
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "matchUpdateTypes": "major",
+      "addLabels": ["major"]
+    }
+  ],
   "npm": {
-    "extends": [
-      "npm:unpublishSafe",
-      ":automergePatch",
-      ":separatePatchReleases"
-    ],
-    "rangeStrategy": "bump",
+    "extends": ["npm:unpublishSafe"],
     "packageRules": [
-      {
-        "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-        "automerge": true
-      },
-      {
-        "matchUpdateTypes": "major",
-        "addLabels": ["major"]
-      },
       {
         "groupName": "eslint",
         "extends": ["packages:linters"],
         "matchPackagePatterns": ["eslint"]
-      }
-    ]
-  },
-  "gradle": {
-    "extends": [":automergePatch", ":separatePatchReleases"],
-    "rangeStrategy": "bump",
-    "packageRules": [
-      {
-        "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-        "automerge": true
-      },
-      {
-        "matchUpdateTypes": "major",
-        "addLabels": ["major"]
       }
     ]
   }
