@@ -34,10 +34,7 @@
     ]
   },
   "gradle": {
-    "extends": [
-      ":automergePatch",
-      ":separatePatchReleases"
-    ],
+    "extends": [":automergePatch", ":separatePatchReleases"],
     "rangeStrategy": "bump",
     "packageRules": [
       {
